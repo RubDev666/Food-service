@@ -6,7 +6,8 @@ import Heading from "@/components/ui/Heading";
 import { FetchOrder } from '@/types/global';
 
 export default function OrdersPage() {
-    const url = '/admin/orders/api';
+    //const url = '/admin/orders/api';
+    const url = '/api/orders';
 
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data);
 
