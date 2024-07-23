@@ -7,7 +7,7 @@ import { FetchOrder } from '@/types/global';
 
 export default function OrdersPage() {
     //const url = '/admin/orders/api';
-    const url = '/api/orders';
+    const url = '/api/orders?isReady=false';
 
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data);
 

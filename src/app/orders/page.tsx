@@ -7,7 +7,7 @@ import LatestOrderItem from "@/components/order/LatestOrderItem";
  
 export default function OrdersPage() {
     //const url = '/orders/api';
-    const url = '/api/orders';
+    const url = '/api/orders?isReady=true';
 
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data);
 

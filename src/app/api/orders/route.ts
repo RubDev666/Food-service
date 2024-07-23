@@ -2,13 +2,19 @@ import OrderModel from "@/lib/models/orders";
 import ProductModel from "@/lib/models/products";
 import { connectToDB } from "@/lib/mongoose";
 import { PreFetchOrder, FetchProduct, OrderItem, FetchOrder } from "@/types/global";
+import { NextRequest } from "next/server";
 
 export const dynamic = 'force-dynamic'; //solution to error in production
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     connectToDB();
 
-    const res: PreFetchOrder[] = await OrderModel.find({isReady: false});
+    const searchParams = request.nextUrl.searchParams;
+    const isReady = searchParams.get('isReady');
+
+    if(!isReady) Response.json([]);
+
+    const res: PreFetchOrder[] = await OrderModel.find({isReady: isReady === 'true' ? true : false});
 
     let allOrders: FetchOrder[] = [];
 
