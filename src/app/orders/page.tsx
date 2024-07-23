@@ -6,7 +6,8 @@ import { FetchOrder } from "@/types/global";
 import LatestOrderItem from "@/components/order/LatestOrderItem";
  
 export default function OrdersPage() {
-    const url = '/orders/api';
+    //const url = '/orders/api';
+    const url = '/api/orders';
 
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data);
 
