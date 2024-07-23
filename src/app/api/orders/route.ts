@@ -1,10 +1,13 @@
 import OrderModel from "@/lib/models/orders";
 import ProductModel from "@/lib/models/products";
+import { connectToDB } from "@/lib/mongoose";
 import { PreFetchOrder, FetchProduct, OrderItem, FetchOrder } from "@/types/global";
 
 export const dynamic = 'force-dynamic'; //solution to error in production
 
 export async function GET() {
+    connectToDB();
+
     const res: PreFetchOrder[] = await OrderModel.find({isReady: false});
 
     let allOrders: FetchOrder[] = [];
